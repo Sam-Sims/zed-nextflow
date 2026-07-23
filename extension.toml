@@ -1,0 +1,25 @@
+id = "nextflow"
+name = "Nextflow"
+version = "0.0.1"
+schema_version = 1
+authors = ["Sam Sims <samsimss98@gmail.com>"]
+description = "Nextflow language support"
+repository = "https://github.com/sam-sims/nextflow-zed"
+
+[[capabilities]]
+kind = "process:exec"
+command = "*"
+args = ["-version"]
+
+[[capabilities]]
+kind = "download_file"
+host = "github.com"
+path = ["nextflow-io", "language-server", "releases", "download", "**"]
+
+[grammars.nextflow]
+repository = "https://github.com/nextflow-io/tree-sitter-nextflow"
+rev = "172d3fef409aa1220fa9c10bc674e7dc675710e3"
+
+[language_servers.nextflow-language-server]
+name = "Nextflow Language Server"
+languages = ["Nextflow"]
