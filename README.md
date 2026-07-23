@@ -89,3 +89,4 @@ This extension builds on the work of several existing language extensions that p
 - https://github.com/DLBPointon/zed_nextflow
 - https://github.com/valentinegb/zed-groovy/
 - https://github.com/nextflow-io/tree-sitter-nextflow/tree/main/queries
+- https://github.com/nextflow-io/vscode-language-nextflow
