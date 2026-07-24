@@ -13,6 +13,8 @@
 
 ;; Nextflow declarations
 
+(identifier) @variable
+
 (feature_flag
   "nextflow" @variable.special)
 
