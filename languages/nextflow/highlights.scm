@@ -61,6 +61,9 @@
 (option_entry
   . (identifier) @property)
 
+(map_entry
+  . (identifier) @property)
+
 ;; Calls, channel operations, and properties
 
 [
