@@ -1,34 +1,17 @@
 # nextflow-zed
-A WIP Zed extension for Nextflow. Heavily inspired by other works - see credits.
 
-`nextflow-zed` adds Nextflow language support to [Zed](https://zed.dev/), using the official [Nextflow Tree-sitter grammar](https://github.com/nextflow-io/tree-sitter-nextflow) and [language server](https://github.com/nextflow-io/language-server).
+Nextflow language support for [Zed](https://zed.dev/), using the official [Nextflow Tree-sitter grammar](https://github.com/nextflow-io/tree-sitter-nextflow) and [language server](https://github.com/nextflow-io/language-server).
 
-## Contents
+Inspired by other works - see credits.
 
-- [Features](#features)
-- [Requirements](#requirements)
-- [Install as a dev extension](#install-as-a-dev-extension)
-- [Configuration](#configuration)
-- [Defaults](#defaults)
-- [Development](#development)
-- [Credits](#credits)
-
-## Features
-
-- Supports nextflow versions `24.10`, `25.04`, `25.10` and `26.04`
-- Syntax highlighting
-- Inline diagnositics
-- Nextflow config support
-- Bash highlighting for `script` blocks
-- Bracket/comment/quote autocomplete
+<img width="1092" alt="Screenshot" src="assets/img.png">
 
 ## Requirements
 
-- Java 17 or later
+- Java 17 or later (to run the language server)
 - [Rust](https://www.rust-lang.org/tools/install) when installing this as a dev extension
 
-
-## Install as a dev extension
+## Install
 
 This extension is not yet published, but can be installed directly from the repository.
 
@@ -46,9 +29,7 @@ Then in Zed:
 
 You can also open the command palette and run `zed: install dev extension`.
 
-Zed will build and install the extension automatically. Open a `.nf` file to start it and the language-server JAR will be downloaded on first use.
-
-If installation fails, open the command palette and run `zed: open log`. I would also recommend launching Zed with `zededitor --foreground` when debugging the extension itself.
+Zed will build and install the extension automatically. Open a `.nf` file to start it and the language server JAR will be downloaded on first use.
 
 ## Configuration
 
@@ -69,7 +50,7 @@ Configure the extension under the `lsp` key in your global Zed `settings.json`, 
           },
           "errorReportingMode": "warnings",
           "files": {
-            "exclude": [".git", ".nextflow", "work"]
+            "exclude": [".git", ".lineage", ".nf-test", ".pixi", ".venv", "work"]
           }
         }
       }
@@ -78,9 +59,19 @@ Configure the extension under the `lsp` key in your global Zed `settings.json`, 
 }
 ```
 
-- The `java` and `languageServer` entries are optional overrides. Without them, the extension finds Java through `JAVA_HOME` or your `PATH` and automatically downloads the newest language-server patch for the selected Nextflow language version.
+- The extension includes the following language server defaults from the [VS Code Nextflow extension configuration](https://github.com/nextflow-io/vscode-language-nextflow#configuration):
+  - `nextflow.completion.extended`: `false`
+  - `nextflow.completion.maxItems`: `100`
+  - `nextflow.debug`: `false`
+  - `nextflow.errorReportingMode`: `"warnings"`
+  - `nextflow.files.exclude`: `.git`, `.lineage`, `.nf-test`, `.pixi`, `.venv` and `work`
+  - `nextflow.formatting.harshilAlignment`: `false`
+  - `nextflow.formatting.maheshForm`: `false`
+  - `nextflow.formatting.sortDeclarations`: `false`
+- However settings defined in the zed `settings.json` overwrite the extension defaults. See [Configuring Language Servers](https://zed.dev/docs/configuring-languages#configuring-language-servers) for details.
+- The `java` and `languageServer` entries are optional overrides. Without them, the extension finds Java through `JAVA_HOME` or your `PATH` and automatically downloads the newest language server patch version for the selected Nextflow language version.
 - Supported language versions are `26.04`, `25.10`, `25.04` and `24.10`. The default is `26.04`. Restart the language server after changing its version, Java installation or JAR.
-- Settings inside the `nextflow` object are forwarded to the language server, with user values overriding the extension defaults. See [Configuring Language Servers](https://zed.dev/docs/configuring-languages#configuring-language-servers) for details.
+
 
 ## Credits
 
