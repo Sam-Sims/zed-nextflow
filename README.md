@@ -123,6 +123,3 @@ turn built on:
 - [valentinegb/zed-groovy](https://github.com/valentinegb/zed-groovy)
 - [nextflow-io/vscode-language-nextflow](https://github.com/nextflow-io/vscode-language-nextflow)
 
-## License
-
-MIT
