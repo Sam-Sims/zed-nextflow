@@ -7,7 +7,7 @@ Nextflow language support for [Zed](https://zed.dev/), built on the [Nextflow tr
 ## Features
 
 - Syntax highlighting for `.nf` scripts and `.config` files
-- Bash highlighting inside `script`, `shell`, and `stub` blocks
+- Bash highlighting inside `script` and `stub` blocks
 - Diagnostics, go-to-definition, completion, hover, and formatting from the language server
 - Outline view for processes, workflows, and functions
 - Automatic download of the language server JAR, pinned to a Nextflow version
