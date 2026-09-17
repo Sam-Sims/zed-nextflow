@@ -11,5 +11,6 @@
   . "{") @item
 
 (function_definition
+  "def" @context
   (identifier) @name
   . "(") @item
