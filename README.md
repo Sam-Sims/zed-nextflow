@@ -1,8 +1,6 @@
 # zed-nextflow
 
-Nextflow language support for [Zed](https://zed.dev/), built on the
-[Nextflow tree-sitter grammar](https://github.com/nextflow-io/tree-sitter-nextflow)
-and the [Nextflow language server](https://github.com/nextflow-io/language-server).
+Nextflow language support for [Zed](https://zed.dev/), built on the [Nextflow tree-sitter grammar](https://github.com/nextflow-io/tree-sitter-nextflow) and the [Nextflow language server](https://github.com/nextflow-io/language-server).
 
 <img width="1092" alt="Screenshot" src="assets/img.png">
 
@@ -16,26 +14,21 @@ and the [Nextflow language server](https://github.com/nextflow-io/language-serve
 
 ## Requirements
 
-Java 17 or later, to run the language server. Installing as a dev extension
-also needs [Rust](https://www.rust-lang.org/tools/install).
+Java 17 or later, to run the language server. Installing as a dev extension also requires [Rust](https://www.rust-lang.org/tools/install).
 
 ## Install
 
-The extension is not yet in the Zed extension registry. Until then, install it
-from source.
+The extension is not yet in the Zed extension registry. Until then, install it from source.
 
 ```bash
 git clone https://github.com/nextflow-io/zed-nextflow.git
 ```
 
-In Zed, open the command palette and run `zed: install dev extension`, then
-pick the cloned directory. Zed builds and installs it. Open a `.nf` file to
-start the language server, which downloads its JAR on first use.
+In Zed, open the command palette and run `zed: install dev extension`, then pick the cloned directory. Zed builds and installs it. Open a `.nf` file to start the language server, which downloads its JAR on first use.
 
 ## Configuration
 
-Settings go under the `lsp` key in your global Zed `settings.json`, or in a
-project's `.zed/settings.json`.
+Settings go under the `lsp` key in your global Zed `settings.json`, or in a project's `.zed/settings.json`.
 
 ```json
 {
@@ -61,8 +54,7 @@ project's `.zed/settings.json`.
 }
 ```
 
-The extension sends the same language server defaults as the
-[VS Code extension](https://github.com/nextflow-io/vscode-language-nextflow#configuration):
+The extension sends the same language server defaults as the [VS Code extension](https://github.com/nextflow-io/vscode-language-nextflow#configuration):
 
 | Setting | Default |
 | --- | --- |
@@ -75,20 +67,14 @@ The extension sends the same language server defaults as the
 | `nextflow.formatting.maheshForm` | `false` |
 | `nextflow.formatting.sortDeclarations` | `false` |
 
-Anything you set in `settings.json` overrides these. See
-[Configuring language servers](https://zed.dev/docs/configuring-languages#configuring-language-servers).
+Anything you set in `settings.json` overrides these. See [Configuring language servers](https://zed.dev/docs/configuring-languages#configuring-language-servers).
 
 Two settings are extension-specific rather than language server settings:
 
-- `nextflow.java.home` points at a JDK. Without it the extension looks at
-  `JAVA_HOME`, then `PATH`.
-- `nextflow.languageServer.path` points at a JAR you built yourself, which
-  skips the download. Useful when working on the language server.
+- `nextflow.java.home` points at a JDK. Without it the extension looks at `JAVA_HOME`, then `PATH`.
+- `nextflow.languageServer.path` points at a JAR you built yourself, which skips the download. Useful when working on the language server.
 
-`nextflow.languageVersion` picks which language server release to download.
-Supported values are `26.04` (the default), `25.10`, `25.04`, and `24.10`. The
-extension downloads the newest patch release for that version. Restart the
-language server after changing the version, the JDK, or the JAR path.
+`nextflow.languageVersion` picks which language server release to download. Supported values are `26.04` (the default), `25.10`, `25.04`, and `24.10`. The extension downloads the newest patch release for that version. Restart the language server after changing the version, the JDK, or the JAR path.
 
 ## Development
 
@@ -96,30 +82,19 @@ language server after changing the version, the JDK, or the JAR path.
 cargo build --release --target wasm32-wasip2
 ```
 
-Query files live in `languages/nextflow/`. After editing one, run
-`zed: reload extensions` to see the change. To check a query against the
-grammar:
+Query files live in `languages/nextflow/`. After editing one, run `zed: reload extensions` to see the change. To check a query against the grammar:
 
 ```bash
 tree-sitter query languages/nextflow/highlights.scm path/to/script.nf
 ```
 
-The grammar revision is pinned in `extension.toml`. Bump it when
-`tree-sitter-nextflow` cuts a release, and re-run the queries against the new
-revision, since node names can change.
+The grammar revision is pinned in `extension.toml`. Bump it when `tree-sitter-nextflow` cuts a release, and re-run the queries against the new revision, since node names can change.
 
 ## Credits
 
-This extension began as community work in
-[nextflow-io/language-server#122](https://github.com/nextflow-io/language-server/issues/122).
-The Rust extension code, queries, and configuration come from
-[Sam-Sims/nextflow-zed](https://github.com/Sam-Sims/nextflow-zed), which in
-turn built on:
+This extension is built on several community contributions:
 
-- [ctuni/zed-nextflow](https://github.com/ctuni/zed-nextflow), the first
-  version that loaded the language server and highlighted Nextflow
-- [DLBPointon/zed_nextflow](https://github.com/DLBPointon/zed_nextflow), the
-  first attempt and the source of much of the original highlight query
+- [ctuni/zed-nextflow](https://github.com/ctuni/zed-nextflow)
+- [DLBPointon/zed_nextflow](https://github.com/DLBPointon/zed_nextflow)
+- [Sam-Sims/nextflow-zed](https://github.com/Sam-Sims/nextflow-zed)
 - [valentinegb/zed-groovy](https://github.com/valentinegb/zed-groovy)
-- [nextflow-io/vscode-language-nextflow](https://github.com/nextflow-io/vscode-language-nextflow)
-
