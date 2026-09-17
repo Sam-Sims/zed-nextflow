@@ -37,7 +37,7 @@ impl zed::Extension for NextflowExtension {
         let java_path = resolve_java(worktree, settings.settings.as_ref())?;
 
         // users can provide a path to language server JAR in settings
-        // this will mainly be used for testing with a locally built langauge server
+        // this will mainly be used for testing with a locally built language server
         let extension_directory = env::current_dir()
             .map_err(|error| format!("Failed to resolve language-server path: {error}"))?;
         let jar_path = match parse_language_server_path(settings.settings.as_ref())? {
@@ -80,7 +80,7 @@ impl zed::Extension for NextflowExtension {
                 .settings
                 .unwrap_or_else(|| zed::serde_json::json!({}));
 
-        // defaalts taken from VScode plugin
+        // defaults taken from vscode plugin
         // they are merged with user settings - with any user provided overwriting these
         let mut settings = zed::serde_json::json!({
             "nextflow": {
