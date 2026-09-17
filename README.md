@@ -14,17 +14,13 @@ Nextflow language support for [Zed](https://zed.dev/), built on the [Nextflow tr
 
 ## Requirements
 
-Java 17 or later, to run the language server. Installing as a dev extension also requires [Rust](https://www.rust-lang.org/tools/install).
+Java 17 or later, to run the language server.
 
 ## Install
 
-The extension is not yet in the Zed extension registry. Until then, install it from source.
+Open the command palette, run `zed: extensions`, search for Nextflow, and install.
 
-```bash
-git clone https://github.com/nextflow-io/zed-nextflow.git
-```
-
-In Zed, open the command palette and run `zed: install dev extension`, then pick the cloned directory. Zed builds and installs it. Open a `.nf` file to start the language server, which downloads its JAR on first use.
+Open a `.nf` file to start the language server. It downloads its JAR on first use, so the first open takes a moment and needs network access.
 
 ## Configuration
 
@@ -78,6 +74,8 @@ Two settings are extension-specific rather than language server settings:
 
 ## Development
 
+Clone the repository, then run `zed: install dev extension` from the command palette and pick the directory. Zed builds and installs it, replacing the registry version until you uninstall it. This needs [Rust](https://www.rust-lang.org/tools/install).
+
 ```bash
 cargo build --release --target wasm32-wasip2
 ```
@@ -89,6 +87,8 @@ tree-sitter query languages/nextflow/highlights.scm path/to/script.nf
 ```
 
 The grammar revision is pinned in `extension.toml`. Bump it when `tree-sitter-nextflow` cuts a release, and re-run the queries against the new revision, since node names can change.
+
+To publish a new version, bump `version` in `extension.toml` and `Cargo.toml`, then open a PR against [zed-industries/extensions](https://github.com/zed-industries/extensions) updating the `version` for `nextflow` in `extensions.toml`.
 
 ## Credits
 
