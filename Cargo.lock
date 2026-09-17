@@ -360,13 +360,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "nextflow-zed"
-version = "0.1.0"
-dependencies = [
- "zed_extension_api",
-]
-
-[[package]]
 name = "once_cell"
 version = "1.21.4"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -754,6 +747,13 @@ dependencies = [
  "quote",
  "syn 2.0.119",
  "synstructure",
+]
+
+[[package]]
+name = "zed-nextflow"
+version = "0.1.0"
+dependencies = [
+ "zed_extension_api",
 ]
 
 [[package]]
