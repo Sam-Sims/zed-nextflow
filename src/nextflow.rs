@@ -266,13 +266,17 @@ fn resolve_managed_language_server(
             Ok(None) => {
                 return cached_jar_path.ok_or_else(|| {
                     format!(
-                        "No language server release found on GitHub for Nextflow {language_version}"
+                        "No language server release found on GitHub for Nextflow {language_version} and no cached version is available"
                     )
                 });
             }
             // network lookup fails entirely
             Err(error) => {
-                return cached_jar_path.ok_or(error);
+                return cached_jar_path.ok_or_else(|| {
+                    format!(
+                        "Failed to check for a language server release and no cached version is available: {error}"
+                    )
+                });
             }
         };
 
