@@ -238,9 +238,9 @@ fn parse_selected_language_version(settings: Option<&Value>) -> zed::Result<&str
         .split_once('.')
         .is_some_and(|(major, minor)| {
             major.len() == 2
-            && minor.len() == 2
-            && major.chars().all(|c| c.is_ascii_digit())
-            && minor.chars().all(|c| c.is_ascii_digit())
+                && minor.len() == 2
+                && major.chars().all(|c| c.is_ascii_digit())
+                && minor.chars().all(|c| c.is_ascii_digit())
         });
 
     if !valid {
