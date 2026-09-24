@@ -14,7 +14,7 @@
  * limitations under the License.
  *
  * Original portions of this file are licensed under the MIT License.
- * See THIRD_PARTY_LICENSES
+ * See NOTICE
  */
 
 use std::{
