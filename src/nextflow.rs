@@ -234,14 +234,18 @@ fn parse_selected_language_version(settings: Option<&Value>) -> zed::Result<&str
         .and_then(Value::as_str)
         .unwrap_or("26.04");
 
-    // TODO: this does mean newer nextflow releases require a plugin update to work which
-    // might not be ideal - currently only used for early validation so could accept it
-    // and let the download fail later
-    let supported_versions = ["26.04", "25.10", "25.04", "24.10"];
+    let valid = language_version
+        .split_once('.')
+        .is_some_and(|(major, minor)| {
+            major.len() == 2
+                && minor.len() == 2
+                && major.chars().all(|c| c.is_ascii_digit())
+                && minor.chars().all(|c| c.is_ascii_digit())
+        });
 
-    if !supported_versions.contains(&language_version) {
+    if !valid {
         return Err(format!(
-            "Unsupported Nextflow language version: {language_version}"
+            "Invalid Nextflow language version: {language_version}; expected YY.MM"
         ));
     }
 
