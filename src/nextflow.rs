@@ -235,7 +235,7 @@ fn parse_selected_language_version(settings: Option<&Value>) -> zed::Result<&str
         .and_then(|settings| settings.get("nextflow"))
         .and_then(|nextflow| nextflow.get("languageVersion"))
         .and_then(Value::as_str)
-        .unwrap_or("26.04");
+        .unwrap_or("26.10");
 
     let valid = language_version
         .split_once('.')

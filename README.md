@@ -32,7 +32,7 @@ Settings go under the `lsp` key in your global Zed `settings.json`, or in a proj
     "nextflow-language-server": {
       "settings": {
         "nextflow": {
-          "languageVersion": "26.04",
+          "languageVersion": "26.10",
           "java": {
             "home": "/path/to/jdk-17-or-later"
           },
@@ -70,7 +70,7 @@ Two settings are extension-specific rather than language server settings:
 - `nextflow.java.home` points at a JDK. Without it the extension looks at `JAVA_HOME`, then `PATH`.
 - `nextflow.languageServer.path` points at a JAR you built yourself, which skips the download. Useful when working on the language server.
 
-`nextflow.languageVersion` picks which language server release to download. Supported values are `26.04` (the default), `25.10`, `25.04`, and `24.10`. The extension downloads the newest patch release for that version. Restart the language server after changing the version, the JDK, or the JAR path.
+`nextflow.languageVersion` picks which language server release to download. Supported values are `26.10` (the default), `26.04`, `25.10`, `25.04`, and `24.10`. The extension downloads the newest patch release for that version. Restart the language server after changing the version, the JDK, or the JAR path.
 
 ## Development
 
